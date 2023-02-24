@@ -72,33 +72,73 @@
 #Time Complexity = Linear
 
 
-def first_anagram?(str1, str2)
-    all_possible_anagrams = str1.split("").permutation.to_a
-    all_possible_anagrams.include?(str2.split(""))
-end
+# def first_anagram?(str1, str2)
+#     all_possible_anagrams = str1.split("").permutation.to_a
+#     all_possible_anagrams.include?(str2.split(""))
+# end
 
 #p first_anagram?("abcd", "cba")
 #Time Complexity = Factorial
 
-def second_anagram?(str1, str2)
-    arr1 = str1.split("") #=> ['a', 'b', 'c', 'd']
-    arr2 = str2.split("") #=> ['a', 'b', 'c']
-    arr1.each_with_index do |char, index|
-        corresponding_index = arr2.find_index(char)
-        if corresponding_index == nil
-            return false
-        else
-            arr2.delete_at(corresponding_index)
-        end
-    end
-    if arr2.length == 0
-        return true
-    else
-        return false
-    end
-end
+# def second_anagram?(str1, str2)
+#     arr1 = str1.split("") #=> ['a', 'b', 'c', 'd']
+#     arr2 = str2.split("") #=> ['a', 'b', 'c']
+#     arr1.each_with_index do |char, index|
+#         corresponding_index = arr2.find_index(char)
+#         if corresponding_index == nil
+#             return false
+#         else
+#             arr2.delete_at(corresponding_index)
+#         end
+#     end
+#     if arr2.length == 0
+#         return true
+#     else
+#         return false
+#     end
+# end
 
 #p second_anagram?("abecdf", "daebc")
 #Time Complexity = Quadratic
 
+#Phase 3:
 
+# def third_anagram?(str1,str2)
+#     str1.split("").sort == str2.split("").sort
+# end 
+
+#Time Complexity: Quadratic => .sort is quick sort method
+
+#Phase 4:
+
+# def fourth_anagram?(str1,str2)
+#     hash1 = Hash.new(0)
+#     hash2 = Hash.new(0)
+
+#     str1.each_char do |char|
+#         hash1[char] += 1
+#     end
+
+#     str2.each_char do |char|
+#         hash2[char] += 1
+#     end
+#     hash1 == hash2 
+# end
+
+#Time Complexity: Linear
+
+# def fourth_anagram?(str1,str2)
+#     hash1 = Hash.new(0)
+
+#     str1.each_char do |char|
+#         hash1[char] += 1
+#     end
+
+#     str2.each_char do |char|
+#         hash1[char] -= 1
+#     end
+
+#     hash1.values.all? {|v| v == 0}
+# end
+
+#Bonus Method with 1 Hash
