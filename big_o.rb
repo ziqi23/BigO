@@ -72,3 +72,33 @@
 #Time Complexity = Linear
 
 
+def first_anagram?(str1, str2)
+    all_possible_anagrams = str1.split("").permutation.to_a
+    all_possible_anagrams.include?(str2.split(""))
+end
+
+#p first_anagram?("abcd", "cba")
+#Time Complexity = Factorial
+
+def second_anagram?(str1, str2)
+    arr1 = str1.split("") #=> ['a', 'b', 'c', 'd']
+    arr2 = str2.split("") #=> ['a', 'b', 'c']
+    arr1.each_with_index do |char, index|
+        corresponding_index = arr2.find_index(char)
+        if corresponding_index == nil
+            return false
+        else
+            arr2.delete_at(corresponding_index)
+        end
+    end
+    if arr2.length == 0
+        return true
+    else
+        return false
+    end
+end
+
+#p second_anagram?("abecdf", "daebc")
+#Time Complexity = Quadratic
+
+
